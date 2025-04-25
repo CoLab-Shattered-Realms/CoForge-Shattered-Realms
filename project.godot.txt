@@ -1,0 +1,6 @@
+[application]
+config/name="Shattered Realms"
+run/main_scene="res://Scenes/main_menu.tscn"
+
+[rendering]
+quality/driver/driver_name="GLES3"
