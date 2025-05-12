@@ -17,7 +17,7 @@ Click "Import Project" and select project.godot
 Launch the project and open any scene to start contributing
 
 🧩 How to Contribute
-Pick an open task from the Notion board or Discord
+Pick an open task from the Notion board
 Create your feature in a new test scene inside /tests/
 Use clear naming: test_inventory.tscn, npc_dialogue.gd...
 When ready, share your work for review:
