@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dj22vtgg6nt1n"]
+[gd_scene load_steps=11 format=3 uid="uid://dj22vtgg6nt1n"]
 
 [ext_resource type="Texture2D" uid="uid://crv4oiqo7d3hx" path="res://background.png" id="1_klylv"]
 [ext_resource type="Script" uid="uid://jk78coyaqidc" path="res://Scenes/title_screen.gd" id="1_sc4ou"]
@@ -9,6 +9,14 @@
 texture = ExtResource("1_klylv")
 modulate_color = Color(0.494118, 0.494118, 0.494118, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_12m1t"]
+font = ExtResource("3_jwsdq")
+font_size = 100
+font_color = Color(0.961814, 0.961814, 0.961814, 1)
+shadow_size = 10
+shadow_color = Color(0.0980392, 0.0980392, 0.0980392, 0.705882)
+shadow_offset = Vector2(2, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3pa4t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjnsi"]
@@ -17,6 +25,10 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pc7fv"]
 bg_color = Color(0.352941, 0.352941, 0.352941, 1)
@@ -44,7 +56,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sc4ou")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="BG_image" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,45 +64,56 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_s8pph")
+metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Floating_particles" type="CPUParticles2D" parent="."]
+position = Vector2(608, -2)
+amount = 300
+lifetime = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(700, 1)
+gravity = Vector2(-200, 980)
+scale_amount_max = 1.5
+color = Color(0.403283, 0.735609, 0.753638, 1)
+
+[node name="title_text" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -203.0
-offset_right = 175.0
-offset_bottom = -135.0
+offset_left = -345.0
+offset_top = -234.0
+offset_right = 285.0
+offset_bottom = -41.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
 theme_override_fonts/font = ExtResource("3_jwsdq")
 theme_override_font_sizes/font_size = 90
-text = "Title Screen
-"
+text = "A Game Title"
+label_settings = SubResource("LabelSettings_12m1t")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Button_container" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -108.0
+offset_left = -172.0
 offset_top = -37.0
-offset_right = 121.0
-offset_bottom = 181.0
+offset_right = 158.0
+offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Start_" type="Button" parent="VBoxContainer"]
+[node name="Start_" type="Button" parent="Button_container"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0.882353, 0.882353, 0.882353, 1)
@@ -106,7 +129,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ynr2u")
 text = "Start
 "
 
-[node name="Exit_" type="Button" parent="VBoxContainer"]
+[node name="Exit_" type="Button" parent="Button_container"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0.882353, 0.882353, 0.882353, 1)
@@ -120,8 +143,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qjnsi")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pc7fv")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ynr2u")
 text = "Exit"
+metadata/_edit_group_ = true
 
-[node name="Credits_" type="Button" parent="VBoxContainer"]
+[node name="Credits_" type="Button" parent="Button_container"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0.882353, 0.882353, 0.882353, 1)
@@ -135,7 +159,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qjnsi")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pc7fv")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ynr2u")
 text = "Credits"
+metadata/_edit_group_ = true
 
-[connection signal="pressed" from="VBoxContainer/Start_" to="." method="_on_start__pressed"]
-[connection signal="pressed" from="VBoxContainer/Exit_" to="." method="_on_exit__pressed"]
-[connection signal="pressed" from="VBoxContainer/Credits_" to="." method="_on_credits__pressed"]
+[connection signal="pressed" from="Button_container/Start_" to="." method="_on_start__pressed"]
+[connection signal="pressed" from="Button_container/Exit_" to="." method="_on_exit__pressed"]
+[connection signal="pressed" from="Button_container/Credits_" to="." method="_on_credits__pressed"]
