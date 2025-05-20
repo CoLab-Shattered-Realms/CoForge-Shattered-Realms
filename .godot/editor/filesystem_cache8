@@ -1,0 +1,18 @@
+2a60927148abd1d33b818b535e306557
+::res://::1747730752
+background.png::CompressedTexture2D::6011189881555584973::1720531864::1747565776::1::::<><>::
+button.png::CompressedTexture2D::857696908498188970::1720527269::1747565776::1::::<><>::
+logo.png::CompressedTexture2D::5393425676985174060::1720527269::1747565776::1::::<><>::
+README.md::TextFile::-1::1747516716::0::1::::<><>::
+::res://Scenes/::1747731025
+main_menu.tscn::PackedScene::-1::1747516716::0::1::::<><>::
+random_test_scene.tscn::PackedScene::9091100725350997039::1747731025::0::1::::<><>::
+Supermarket of Love.ttf::FontFile::9075889853003147948::1747727491::1747727491::1::::<><>::
+title_screen.gd::GDScript::-1::1747730273::0::1::::<>Control<>::
+title_screen.tscn::PackedScene::7848377711184957925::1747731025::0::1::::<><>::uid://crv4oiqo7d3hx<>res://Scenes/title_screen.gd<>uid://bp71n3c77ssvc<>uid://cbkvmtoi3rmxv
+::res://UI/::1747731092
+custom_theme.tres::Theme::2543865233798542757::1747727785::0::1::::<><>::
+default_font.tres::::-1::1747516716::0::1::::<><>::
+iIchimaru.ttf::FontFile::3506916758767029540::1747730749::1747730752::1::::<><>::
+iImbas.ttf::FontFile::285789538747778143::1747731092::1747731092::1::::<><>::
+Jack Sphinx.ttf::FontFile::4864971494912284955::1744909294::1747727585::1::::<><>::
