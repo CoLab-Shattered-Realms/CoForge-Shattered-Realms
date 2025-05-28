@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Shattered Realms"
-run/main_scene="uid://c754uf5ovwl5x"
+run/main_scene="uid://dj22vtgg6nt1n"
 config/features=PackedStringArray("4.4")
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
 quality/driver/driver_name="GLES3"

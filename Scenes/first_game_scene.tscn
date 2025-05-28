@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2r2doox5dgq6"]
+
+[ext_resource type="Script" uid="uid://jk78coyaqidc" path="res://Scenes/title_screen.gd" id="1_b3pbq"]
+[ext_resource type="Texture2D" uid="uid://crv4oiqo7d3hx" path="res://background.png" id="2_osp3v"]
+[ext_resource type="FontFile" uid="uid://bp71n3c77ssvc" path="res://UI/iIchimaru.ttf" id="3_kcj0c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s8pph"]
+texture = ExtResource("2_osp3v")
+modulate_color = Color(0.494118, 0.494118, 0.494118, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_12m1t"]
+font = ExtResource("3_kcj0c")
+font_size = 100
+font_color = Color(0.961814, 0.961814, 0.961814, 1)
+shadow_size = 10
+shadow_color = Color(0.0980392, 0.0980392, 0.0980392, 0.705882)
+shadow_offset = Vector2(2, 1)
+
+[node name="first_game_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b3pbq")
+
+[node name="BG_image" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s8pph")
+metadata/_edit_lock_ = true
+
+[node name="Floating_particles" type="CPUParticles2D" parent="."]
+position = Vector2(608, -2)
+amount = 300
+lifetime = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(700, 1)
+gravity = Vector2(-200, 980)
+scale_amount_max = 1.5
+color = Color(0.403283, 0.735609, 0.753638, 1)
+
+[node name="title_text" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.0
+offset_top = -234.0
+offset_right = 285.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_kcj0c")
+theme_override_font_sizes/font_size = 90
+text = "First Game Scene"
+label_settings = SubResource("LabelSettings_12m1t")
+horizontal_alignment = 1
+vertical_alignment = 1
