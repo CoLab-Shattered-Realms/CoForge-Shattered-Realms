@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c754uf5ovwl5x"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Main Menu" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
