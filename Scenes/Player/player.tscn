@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdk6hwb4hi2wc"]
+
+[ext_resource type="Script" uid="uid://btu8ds1p4nifb" path="res://Scenes/Player/player.gd" id="1_2f8j2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3rsb5"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uvnfx"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvnfx"]
+albedo_color = Color(0.207843, 0.545098, 1, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_2f8j2")
+
+[node name="CShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_3rsb5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_uvnfx")
+surface_material_override/0 = SubResource("StandardMaterial3D_uvnfx")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50014, 0)
+
+[node name="SpotLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48122, 0)
+light_energy = 3.0
+spot_range = 15.0
+spot_angle = 50.0

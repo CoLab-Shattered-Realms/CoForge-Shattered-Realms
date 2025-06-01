@@ -1,4 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2r2doox5dgq6"]
+[gd_scene load_steps=11 format=3 uid="uid://d2r2doox5dgq6"]
+
+[ext_resource type="PackedScene" uid="uid://cdk6hwb4hi2wc" path="res://Scenes/Player/player.tscn" id="1_jhllh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhllh"]
 albedo_color = Color(0, 0.517647, 0, 1)
@@ -28,6 +30,9 @@ background_mode = 2
 ambient_light_color = Color(0.306923, 0.306923, 0.306923, 1)
 
 [node name="World" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jhllh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.7, 0.7)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
