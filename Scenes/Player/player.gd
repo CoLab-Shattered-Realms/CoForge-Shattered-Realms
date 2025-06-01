@@ -20,7 +20,9 @@ var walk_vel: Vector3  # Walking velocity
 var grav_vel: Vector3  # Gravity velocity
 var jump_vel: Vector3  # Jumping velocity
 
-@onready var camera: Camera3D = $Camera
+
+@onready var camera_pivot: Node3D = %CameraPivot
+@onready var camera: Camera3D = %Camera
 @onready var spot_light: SpotLight3D = $SpotLight
 
 
@@ -56,11 +58,13 @@ func release_mouse() -> void:
 
 
 func _rotate_camera(sens_mod: float = 1.0) -> void:
-	camera.rotation.y -= look_dir.x * camera_sens * sens_mod
-	camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sens * sens_mod, -1.5, 1.5)
-	
-	spot_light.rotation.y = camera.rotation.y
-	spot_light.rotation.x = camera.rotation.x
+	# Rotate the SpringArm3D instead of the camera directly
+	camera_pivot.rotation.y -= look_dir.x * camera_sens * sens_mod
+	camera_pivot.rotation.x = clamp(camera_pivot.rotation.x - look_dir.y * camera_sens * sens_mod, -1.5, 1.5) # Adjusted clamp values for typical third-person view
+
+	# SpotLight3D should still follow the camera's rotation relative to the player
+	spot_light.rotation.y = camera_pivot.rotation.y
+	spot_light.rotation.x = camera_pivot.rotation.x
 
 
 func _handle_joypad_camera_rotation(delta: float, sens_mod: float = 1.0) -> void:

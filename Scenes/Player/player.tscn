@@ -16,6 +16,16 @@ albedo_color = Color(0.207843, 0.545098, 1, 1)
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_2f8j2")
 
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+spring_length = 3.0
+
+[node name="Camera" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+unique_name_in_owner = true
+
 [node name="CShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_3rsb5")
@@ -25,11 +35,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 mesh = SubResource("CapsuleMesh_uvnfx")
 surface_material_override/0 = SubResource("StandardMaterial3D_uvnfx")
 
-[node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50014, 0)
-
 [node name="SpotLight" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48122, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49272, 0)
 light_energy = 3.0
 spot_range = 15.0
 spot_angle = 50.0
