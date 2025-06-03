@@ -134,10 +134,15 @@ func _walk(delta: float) -> Vector3:
 
 ## Calculates the vertical velocity component due to gravity.
 func _gravity(delta: float) -> Vector3:
-	# gravity velocity should return zero if the character is on the floor, and 
+	
 	grav_vel = (
+		# gravity velocity should return zero if the character is on the floor, as they're not falling anymore
 		Vector3.ZERO
-		if is_on_floor()
+		if is_on_floor() 
+		# If not on the floor, gravity is applied.
+		# Smoothly increases the downward grav_vel
+		# The target velocity Vector3(0, velocity.y - gravity, 0) is a conceptual representation of continuous downward acceleration without a terminal velocity.
+		# move_toward effectively applies gravity * delta downwards each frame if not on floor.
 		else grav_vel.move_toward(Vector3(0, velocity.y - gravity, 0), gravity * delta)
 	)
 	return grav_vel
@@ -152,6 +157,9 @@ func _jump(delta: float) -> Vector3:
 		jumping = false
 		return jump_vel
 	jump_vel = (
+		# Resets jump_vel to Vector3.ZERO if character is on the floor.
+		# If not on the floor, jump_vel is smoothly moved towards Vector3.ZERO by applying gravity * delta. 
+		# This simulates the deceleration of the jump's upward motion due to gravity.
 		Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	)
 	return jump_vel
